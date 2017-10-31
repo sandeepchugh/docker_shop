@@ -4,12 +4,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CatalogApi.Models;
+using CatalogApi.Services;
+using Microsoft.Extensions.Logging;
 
 namespace CatalogApi.Controllers
 {
     [Route("api/[controller]")]
     public class CatalogController : Controller
     {
+        private readonly ICatalogService _catalogService;
+        private readonly ILogger<CatalogController> _logger;
+
+        public CatalogController(ICatalogService catalogService, ILogger<CatalogController> logger)
+        {
+            _catalogService = catalogService ?? throw new ArgumentNullException(nameof(catalogService));
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+        }
+
         // GET api/catalog
         [HttpGet]
         public IEnumerable<Catalog> Get()
