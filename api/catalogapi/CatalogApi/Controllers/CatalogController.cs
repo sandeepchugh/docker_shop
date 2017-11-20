@@ -32,32 +32,7 @@ namespace CatalogApi.Controllers
         [HttpGet("{name}")]
         public Catalog Get(string name)
         {
-            return new Catalog
-            {
-                Name = "Movies",
-                Categories = new List<ProductCategory> {
-                    new ProductCategory{
-                        Name = "Action",
-                        Products = new List<Product>{
-                            new Product {
-                                Name = "Terminator",
-                                Description = "A machine comes from the future to destroy manikind",
-                                ListPrice = 22.00M,
-                                SalesPrice = 14.00M,
-                                Sku = "MOV0001",
-                                Title = "Terminator: Man vs Machine",
-                                Attributes = new List<ProductAttribute>{
-                                    new ProductAttribute{
-                                        Category = "Technical Details",
-                                        Name = "Runtime",
-                                        Value = "1:22:00"
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            };
+            return _catalogService.GetCatalog(name);
         }
 
         // POST api/catalog

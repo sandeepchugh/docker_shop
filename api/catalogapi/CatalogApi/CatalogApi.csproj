@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="nginx\" />
     <Folder Include="Repositories\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
