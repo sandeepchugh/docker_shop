@@ -9,5 +9,6 @@ namespace CatalogApi.Services
     public interface ICatalogService
     {
         Catalog GetCatalog(string catalogName);
+        IEnumerable<string> GetCatalogNames();
     }
 }

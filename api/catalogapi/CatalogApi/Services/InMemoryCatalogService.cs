@@ -8,6 +8,11 @@ namespace CatalogApi.Services
 {
     public class InMemoryCatalogService : ICatalogService
     {
+        public IEnumerable<string> GetCatalogNames()
+        {
+            return new List<string>{"Movies", "Books"};
+        }
+
         public Catalog GetCatalog(string catalogName)
         {
             return new Catalog

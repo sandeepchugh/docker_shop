@@ -66,6 +66,23 @@ namespace CatalogApi.Tests.Controllers
             Assert.Equal(catalog.Categories.Count(), result.Categories.Count());
         }
 
+        [Fact]
+        public void ControllerGetCatalogNamesReturnsCatalogNameList()
+        {
+            var catalogNames = new List<string> {"Movies", "Books"};
+            var mockCatalogService = new Moq.Mock<ICatalogService>();
+            mockCatalogService.Setup(m => m.GetCatalogNames()).Returns(catalogNames);
+
+            var mockLogger = new Mock<ILogger<CatalogController>>().Object;
+
+            var controller = new CatalogController(mockCatalogService.Object, mockLogger);
+            var result = controller.Get();
+
+            Assert.NotNull(result);
+            Assert.Equal(catalogNames.Count(), result.Count());
+        }
+
+
         private Catalog CreateCatalog()
         {
             return new Catalog

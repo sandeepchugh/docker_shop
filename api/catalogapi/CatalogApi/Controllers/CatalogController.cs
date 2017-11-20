@@ -23,9 +23,9 @@ namespace CatalogApi.Controllers
 
         // GET api/catalog
         [HttpGet]
-        public IEnumerable<Catalog> Get()
+        public IEnumerable<string> Get()
         {
-            return new List<Catalog>();
+            return _catalogService.GetCatalogNames();
         }
 
         // GET api/catalog/name
@@ -33,24 +33,6 @@ namespace CatalogApi.Controllers
         public Catalog Get(string name)
         {
             return _catalogService.GetCatalog(name);
-        }
-
-        // POST api/catalog
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/catalog/name
-        [HttpPut("{name}")]
-        public void Put(int name, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/catalog/name
-        [HttpDelete("{name}")]
-        public void Delete(string name)
-        {
         }
     }
 }
