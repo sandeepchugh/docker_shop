@@ -6,12 +6,12 @@ services:
     ports:
       - "80:80"
     links:
-      - api
+      - catalogapi
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - catalogapi_network
-  api:
+  catalogapi:
     image: catalogapi
     build:
       context: ./CatalogApi
