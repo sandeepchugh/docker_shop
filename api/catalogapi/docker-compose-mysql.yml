@@ -20,6 +20,20 @@ services:
     networks:
       - catalogapi_network
 
+  mysql:
+    image: mysql
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+       MYSQL_ROOT_PASSWORD: "catalogrootpassword"
+       MYSQL_DATABASE: "catalogdb"
+       MYSQL_USER: "catalogapiuser"
+       MYSQL_PASSWORD: "catalogapipassword"
+       MYSQL_ALLOW_EMPTY_PASSWORD: "no"
+    volumes:
+      - D:\Dev\shopdata\mysql:/var/lib/mysql
+
 networks:
   catalogapi_network:
     driver: bridge
